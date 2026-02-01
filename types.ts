@@ -8,6 +8,7 @@ export interface ChatSession {
   id: string;
   title: string;
   messages: Message[];
+  updatedAt: number;
 }
 
 export enum ModelType {
@@ -17,4 +18,10 @@ export enum ModelType {
 export interface SendMessageParams {
   history: Message[];
   message: string;
+}
+
+export type Language = 'en' | 'id';
+
+export interface AppSettings {
+  language: Language;
 }
