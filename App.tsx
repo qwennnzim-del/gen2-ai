@@ -134,13 +134,13 @@ const App: React.FC = () => {
     }
   };
 
-  // Modals Components
+  // Modals Components - Dark Mode Updated
   const Modal: React.FC<{title: string, onClose: () => void, children: React.ReactNode}> = ({ title, onClose, children }) => (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in">
-        <div className="bg-white rounded-2xl w-full max-w-sm shadow-2xl p-6 relative animate-fade-in-text">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
+        <div className="bg-neutral-900 border border-white/10 rounded-2xl w-full max-w-sm shadow-2xl p-6 relative animate-fade-in-text">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-slate-800">{title}</h3>
-                <button onClick={onClose} className="p-1 hover:bg-slate-100 rounded-full"><X size={20}/></button>
+                <h3 className="text-lg font-bold text-slate-100">{title}</h3>
+                <button onClick={onClose} className="p-1 hover:bg-white/10 rounded-full text-slate-400"><X size={20}/></button>
             </div>
             {children}
         </div>
@@ -148,7 +148,7 @@ const App: React.FC = () => {
   );
 
   return (
-    <div className="flex h-[100dvh] bg-slate-50 text-slate-900 font-sans overflow-hidden">
+    <div className="flex h-[100dvh] bg-black text-slate-200 font-sans overflow-hidden">
       
       {/* Sidebar */}
       <Sidebar 
@@ -165,21 +165,20 @@ const App: React.FC = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col relative w-full h-full">
         
-        {/* Header */}
-        <header className="flex justify-between items-center p-4 md:p-5 bg-slate-50/90 backdrop-blur-md sticky top-0 z-10 border-b border-transparent transition-all">
+        {/* Header - Dark Mode (Logo/Text Removed from center/right, kept clean) */}
+        <header className="flex justify-between items-center p-4 md:p-5 bg-black/80 backdrop-blur-md sticky top-0 z-10 border-b border-transparent transition-all">
           <div className="flex items-center gap-3">
              <button 
                 onClick={() => setIsSidebarOpen(true)}
-                className="p-2 hover:bg-white hover:shadow-sm rounded-xl text-slate-600 transition-all active:scale-95"
+                className="p-2 hover:bg-white/10 hover:shadow-sm rounded-xl text-slate-400 hover:text-slate-200 transition-all active:scale-95"
             >
                 <Menu size={24} />
             </button>
-            <span className="font-semibold text-slate-700 md:hidden">Gen2</span>
           </div>
           
           <button 
             onClick={startNewChat}
-            className="p-2 hover:bg-white hover:shadow-sm rounded-full text-slate-600 transition-all border border-slate-200 bg-slate-50"
+            className="p-2 hover:bg-white/10 hover:shadow-sm rounded-full text-slate-400 hover:text-slate-200 transition-all border border-white/10 bg-black"
           >
              <MessageSquarePlus size={20} />
           </button>
@@ -205,7 +204,7 @@ const App: React.FC = () => {
           <Modal title="Settings" onClose={() => setShowSettings(false)}>
               <div className="space-y-4">
                   <div>
-                      <label className="block text-sm font-medium text-slate-600 mb-2">App Language</label>
+                      <label className="block text-sm font-medium text-slate-400 mb-2">App Language</label>
                       <select 
                         value={settings.language}
                         onChange={(e) => {
@@ -213,13 +212,13 @@ const App: React.FC = () => {
                              setSettings(newSettings);
                              localStorage.setItem(SETTINGS_KEY, JSON.stringify(newSettings));
                         }}
-                        className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-violet-500 outline-none"
+                        className="w-full p-2.5 bg-black border border-white/20 rounded-lg text-sm text-slate-200 focus:ring-2 focus:ring-violet-500 outline-none"
                       >
                           <option value="en">English</option>
                           <option value="id">Bahasa Indonesia</option>
                       </select>
                   </div>
-                  <div className="text-xs text-slate-400 mt-4">
+                  <div className="text-xs text-slate-500 mt-4">
                       Version 2.0.0 (Beta)
                   </div>
               </div>
@@ -229,15 +228,15 @@ const App: React.FC = () => {
       {/* Help Modal */}
       {showHelp && (
           <Modal title="Help & Support" onClose={() => setShowHelp(false)}>
-             <div className="space-y-3 text-sm text-slate-600">
+             <div className="space-y-3 text-sm text-slate-300">
                  <p><strong>Gen2 Assistant</strong> is designed to help you with creative tasks, coding, and general knowledge.</p>
-                 <ul className="list-disc pl-5 space-y-1">
+                 <ul className="list-disc pl-5 space-y-1 text-slate-400">
                      <li>Use clear prompts for better results.</li>
                      <li>Chat history is saved automatically to your browser.</li>
                      <li>Code blocks can be copied with one click.</li>
                  </ul>
-                 <div className="pt-4 border-t border-slate-100">
-                     <a href="#" className="text-violet-600 font-medium hover:underline">Contact Support</a>
+                 <div className="pt-4 border-t border-white/10">
+                     <a href="#" className="text-violet-400 font-medium hover:underline">Contact Support</a>
                  </div>
              </div>
           </Modal>
