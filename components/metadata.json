@@ -1,0 +1,5 @@
+{
+  "name": "Gen2",
+  "description": "A minimalist, mobile-optimized AI chat interface powered by Gemini 2.5 Flash, featuring a clean aesthetics inspired by Velicia.",
+  "requestFramePermissions": []
+}
