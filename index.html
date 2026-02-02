@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -101,17 +100,20 @@
         animation: spin-centered 8s linear infinite;
       }
 
-      /* FIXED & STABLE LOADER CSS */
+      /* UPDATED LIQUID LOADER CSS */
       .loader {
+        /* Theme Colors: Violet & Fuchsia */
         --color-one: #8b5cf6;
         --color-two: #d946ef;
         --color-three: #8b5cf680;
         --color-four: #d946ef80;
         --color-five: #8b5cf640;
+        
         --time-animation: 2s;
+        --size: 1; /* Scaled via inline style in React */
         
         position: relative;
-        width: 100px;
+        width: 100px; /* Base width matching SVG */
         height: 100px;
         border-radius: 50%;
         transform: scale(var(--size));
@@ -126,8 +128,8 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         border-top: solid 1px var(--color-one);
         border-bottom: solid 1px var(--color-two);
@@ -135,25 +137,76 @@
         box-shadow:
           inset 0 10px 10px 0 var(--color-three),
           inset 0 -10px 10px 0 var(--color-four);
-        z-index: 0;
       }
 
       .loader .box {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100px;
+        height: 100px;
         background: linear-gradient(
           180deg,
           var(--color-one) 30%,
           var(--color-two) 70%
         );
-        mask: url(#orb-mask);
-        -webkit-mask: url(#orb-mask);
-        mask-size: 100% 100%;
-        -webkit-mask-size: 100% 100%;
-        z-index: 1;
+        mask: url(#clipping);
+        -webkit-mask: url(#clipping);
+      }
+
+      .loader svg {
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      .loader svg #clipping {
+        filter: contrast(15);
+        animation: roundness calc(var(--time-animation) / 2) linear infinite;
+      }
+
+      .loader svg #clipping polygon {
+        filter: blur(7px);
+      }
+
+      .loader svg #clipping polygon:nth-child(1) {
+        transform-origin: 75% 25%;
+        transform: rotate(90deg);
+      }
+
+      .loader svg #clipping polygon:nth-child(2) {
+        transform-origin: 50% 50%;
+        animation: rotation var(--time-animation) linear infinite reverse;
+      }
+
+      .loader svg #clipping polygon:nth-child(3) {
+        transform-origin: 50% 60%;
+        animation: rotation var(--time-animation) linear infinite;
+        animation-delay: calc(var(--time-animation) / -3);
+      }
+
+      .loader svg #clipping polygon:nth-child(4) {
+        transform-origin: 40% 40%;
+        animation: rotation var(--time-animation) linear infinite reverse;
+      }
+
+      .loader svg #clipping polygon:nth-child(5) {
+        transform-origin: 40% 40%;
+        animation: rotation var(--time-animation) linear infinite reverse;
+        animation-delay: calc(var(--time-animation) / -2);
+      }
+
+      .loader svg #clipping polygon:nth-child(6) {
+        transform-origin: 60% 40%;
+        animation: rotation var(--time-animation) linear infinite;
+      }
+
+      .loader svg #clipping polygon:nth-child(7) {
+        transform-origin: 60% 40%;
+        animation: rotation var(--time-animation) linear infinite;
+        animation-delay: calc(var(--time-animation) / -1.5);
+      }
+
+      @keyframes rotation {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
 
       @keyframes roundness {
@@ -166,23 +219,11 @@
 
       @keyframes colorize {
         0% { filter: hue-rotate(0deg); }
-        100% { filter: hue-rotate(360deg); }
-      }
-
-      .loader svg {
-        position: absolute;
-        width: 0;
-        height: 0;
-        opacity: 0;
-        pointer-events: none;
-      }
-      
-      #orb-mask {
-        animation: roundness calc(var(--time-animation) / 2) linear infinite;
-      }
-      
-      #orb-mask polygon {
-        filter: blur(6px);
+        20% { filter: hue-rotate(-30deg); }
+        40% { filter: hue-rotate(-60deg); }
+        60% { filter: hue-rotate(-90deg); }
+        80% { filter: hue-rotate(-45deg); }
+        100% { filter: hue-rotate(0deg); }
       }
     </style>
 <script type="importmap">
