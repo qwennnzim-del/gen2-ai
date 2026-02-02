@@ -16,7 +16,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
              {/* Logo - Removed Text & Effects as requested */}
-             <img src="/logoApp/logo-app.svg" alt="Gen2" className="h-10 w-auto object-contain" />
+             <img src="/logoApp/logo-app.png" alt="Gen2" className="h-10 w-auto object-contain" />
           </div>
           
           <div className="hidden md:flex items-center gap-8">
@@ -199,7 +199,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
              <div>
                  <div className="flex items-center gap-3 mb-4">
                     {/* Footer Logo - Removed Text as requested */}
-                    <img src="/logoApp/logo-app.svg" alt="Gen2" className="h-8 w-auto object-contain" />
+                    <img src="/logoApp/logo-app.png" alt="Gen2" className="h-8 w-auto object-contain" />
                  </div>
                  <p className="text-slate-500 text-sm max-w-xs mb-8">
                      AI writing tool is designed to empower you with exceptional writing capabilities.
