@@ -34,11 +34,11 @@ const Sidebar: React.FC<SidebarProps> = ({
       {/* Sidebar Panel - Dark Mode */}
       <div className={`fixed top-0 left-0 h-[100dvh] w-[280px] bg-neutral-950 border-r border-white/5 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         
-        {/* Header - Logo Only (Optimized & Larger) */}
+        {/* Header - Logo Only (Enlarged) */}
         <div className="p-6 flex items-center justify-between border-b border-white/5">
           <div className="flex items-center">
-             {/* Logo enlarged to h-12 (48px) */}
-             <img src="/logoApp/logo-app.png" alt="Gen2.ai" className="h-12 w-auto object-contain" />
+             {/* Logo enlarged to h-24 (approx 96px) as requested */}
+             <img src="/logoApp/logo-app.png" alt="Gen2.ai" className="h-24 w-auto object-contain" />
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full text-slate-400 md:hidden">
             <X size={20} />

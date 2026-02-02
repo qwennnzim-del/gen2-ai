@@ -101,11 +101,11 @@ const MessageList: React.FC<MessageListProps> = ({ messages, isLoading }) => {
           ) : (
             // MODEL: Logo placed ABOVE the answer
             <div className="flex items-center gap-2 mb-1">
-               {/* Increased size from h-6 to h-9 (36px) */}
+               {/* Increased size from h-9 to h-12 (48px) */}
                <img 
                   src="/logoApp/logo-app.png" 
                   alt="Gen2" 
-                  className="h-9 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                   onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentElement!.innerHTML = '<span class="text-xs font-bold text-violet-500">AI</span>';
