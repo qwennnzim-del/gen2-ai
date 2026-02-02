@@ -9,8 +9,8 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
   return (
     <div className="flex flex-col items-center justify-center h-full px-6 text-center animate-fade-in pb-10">
       {/* Logo Area - Clean & Transparent */}
-      {/* Increased margin-top to mt-32 to push logo significantly lower as requested */}
-      <div className="mb-8 mt-32 relative group cursor-pointer" onClick={onStartChat}>
+      {/* Added mt-16 to shift visual center downwards as requested */}
+      <div className="mb-8 mt-16 relative group cursor-pointer" onClick={onStartChat}>
         {/* Glow effect behind the logo */}
         <div className="absolute inset-0 bg-violet-500/10 blur-3xl rounded-full group-hover:bg-violet-500/20 transition-all duration-500"></div>
         
@@ -18,7 +18,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
         <img 
           src="/logoApp/logo-app.png" 
           alt="Gen2 Logo" 
-          className="relative w-48 h-48 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
+          className="relative w-44 h-44 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
           onError={(e) => {
             // Fallback styling if image missing
             e.currentTarget.style.display = 'none';
