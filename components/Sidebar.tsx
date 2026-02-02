@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, MessageSquare, Plus, Settings, HelpCircle, ChevronRight } from 'lucide-react';
-import { ChatSession } from '../types';
+import { ChatSession, Language } from '../types';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -11,6 +11,7 @@ interface SidebarProps {
   onSelectSession: (id: string) => void;
   onOpenSettings: () => void;
   onOpenHelp: () => void;
+  language: Language;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ 
@@ -21,8 +22,18 @@ const Sidebar: React.FC<SidebarProps> = ({
   currentSessionId,
   onSelectSession,
   onOpenSettings,
-  onOpenHelp
+  onOpenHelp,
+  language
 }) => {
+  // Translations
+  const t = {
+    newChat: language === 'id' ? 'Chat Baru' : 'New Chat',
+    history: language === 'id' ? 'RIWAYAT' : 'HISTORY',
+    noHistory: language === 'id' ? 'Belum ada chat terbaru' : 'No recent chats',
+    settings: language === 'id' ? 'Pengaturan' : 'Settings',
+    help: language === 'id' ? 'Bantuan & Dukungan' : 'Help & Support'
+  };
+
   return (
     <>
       {/* Backdrop for mobile */}
@@ -55,16 +66,16 @@ const Sidebar: React.FC<SidebarProps> = ({
             className="flex items-center justify-center gap-2 w-full p-3.5 bg-slate-100 hover:bg-white text-black rounded-xl shadow-lg shadow-white/5 transition-all active:scale-95"
           >
             <Plus size={18} />
-            <span className="font-semibold text-sm">New Chat</span>
+            <span className="font-semibold text-sm">{t.newChat}</span>
           </button>
         </div>
 
         {/* History List */}
         <div className="flex-1 overflow-y-auto px-3 py-2 space-y-1 no-scrollbar">
-          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 px-3 mt-2">History</div>
+          <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 px-3 mt-2">{t.history}</div>
           
           {sessions.length === 0 ? (
-            <div className="px-4 text-sm text-slate-600 italic">No recent chats</div>
+            <div className="px-4 text-sm text-slate-600 italic">{t.noHistory}</div>
           ) : (
             sessions.map((session) => (
               <button 
@@ -96,14 +107,14 @@ const Sidebar: React.FC<SidebarProps> = ({
             className="flex items-center gap-3 w-full p-3 hover:bg-white/10 rounded-xl text-slate-400 hover:text-slate-200 transition-all"
           >
             <Settings size={18} />
-            <span className="text-sm">Settings</span>
+            <span className="text-sm">{t.settings}</span>
           </button>
           <button 
             onClick={onOpenHelp}
             className="flex items-center gap-3 w-full p-3 hover:bg-white/10 rounded-xl text-slate-400 hover:text-slate-200 transition-all"
           >
             <HelpCircle size={18} />
-            <span className="text-sm">Help & Support</span>
+            <span className="text-sm">{t.help}</span>
           </button>
         </div>
       </div>

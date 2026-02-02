@@ -1,11 +1,19 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { Language } from '../types';
 
 interface WelcomeScreenProps {
   onStartChat: () => void;
+  language: Language;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat, language }) => {
+  const t = {
+    title: 'Gen2 Assistant',
+    subtitle: language === 'id' 
+      ? 'Rasakan pengalaman AI generasi berikutnya. Dioptimalkan untuk kejelasan, kecepatan, dan alur kerja harian Anda.'
+      : 'Experience the next generation of AI. Optimized for clarity, speed, and your daily workflow.'
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-full px-6 text-center animate-fade-in pb-10">
       {/* Logo Area - Clean & Transparent */}
@@ -30,15 +38,14 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat }) => {
 
       {/* Main Heading */}
       <h1 className="text-3xl md:text-5xl font-bold text-slate-100 mb-4 tracking-tight">
-        Gen2 Assistant
+        {t.title}
       </h1>
 
       {/* Subtitle */}
       <p className="text-slate-400 text-base md:text-lg max-w-lg mb-12 leading-relaxed">
-        Experience the next generation of AI. Optimized for clarity, speed, and your daily workflow.
+        {t.subtitle}
       </p>
 
-      {/* Suggestion boxes removed as requested */}
     </div>
   );
 };
