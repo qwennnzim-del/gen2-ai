@@ -7,13 +7,14 @@ import WelcomeScreen from './components/WelcomeScreen';
 import MessageList from './components/MessageList';
 import InputArea from './components/InputArea';
 import LandingPage from './components/LandingPage';
+import BlogPage from './components/BlogPage';
 
 const STORAGE_KEY = 'gen2_sessions';
 const SETTINGS_KEY = 'gen2_settings';
 
 const App: React.FC = () => {
-  // View State: 'landing' | 'chat'
-  const [currentView, setCurrentView] = useState<'landing' | 'chat'>('landing');
+  // View State: 'landing' | 'chat' | 'blog'
+  const [currentView, setCurrentView] = useState<'landing' | 'chat' | 'blog'>('landing');
 
   // State
   const [sessions, setSessions] = useState<ChatSession[]>([]);
@@ -205,7 +206,24 @@ const App: React.FC = () => {
   // RENDER: LANDING PAGE
   // -------------------------------------------------------------------------
   if (currentView === 'landing') {
-    return <LandingPage onStart={() => setCurrentView('chat')} />;
+    return (
+        <LandingPage 
+            onStart={() => setCurrentView('chat')} 
+            onGoToBlog={() => setCurrentView('blog')}
+        />
+    );
+  }
+
+  // -------------------------------------------------------------------------
+  // RENDER: BLOG PAGE
+  // -------------------------------------------------------------------------
+  if (currentView === 'blog') {
+    return (
+        <BlogPage 
+            onBack={() => setCurrentView('landing')} 
+            onStart={() => setCurrentView('chat')}
+        />
+    );
   }
 
   // -------------------------------------------------------------------------
