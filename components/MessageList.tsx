@@ -103,10 +103,11 @@ const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, language
             </div>
           ) : (
             <div className="flex items-center gap-2 mb-1">
+               {/* Optimized Avatar: h-7 looks more balanced than h-9 */}
                <img 
                   src="/logoApp/logo-app.png" 
                   alt="Gen2" 
-                  className="h-9 w-auto object-contain"
+                  className="h-7 w-auto object-contain"
                   onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentElement!.innerHTML = '<span class="text-xs font-bold text-violet-500">ZENT</span>';
@@ -225,7 +226,8 @@ const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, language
                     {t.thinking}
                 </span>
                 <div className="flex items-center gap-1.5 opacity-50">
-                    <img src="/logoApp/logo-app.png" alt="Gen2" className="h-3 w-auto grayscale" />
+                    {/* Small loader logo: h-3.5 */}
+                    <img src="/logoApp/logo-app.png" alt="Gen2" className="h-3.5 w-auto grayscale" />
                     <span className="text-[10px] font-bold text-slate-500 tracking-wider">GEN2 AI</span>
                 </div>
             </div>

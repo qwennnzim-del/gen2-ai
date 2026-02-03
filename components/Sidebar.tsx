@@ -48,8 +48,8 @@ const Sidebar: React.FC<SidebarProps> = ({
         {/* Header - Logo Only (Optimized & Larger) */}
         <div className="p-6 flex items-center justify-between border-b border-white/5">
           <div className="flex items-center">
-             {/* Logo enlarged to h-12 (48px) */}
-             <img src="/logoApp/logo-app.png" alt="Gen2.ai" className="h-12 w-auto object-contain" />
+             {/* Logo Optimized: h-9 looks sleeker than h-12 */}
+             <img src="/logoApp/logo-app.png" alt="Gen2.ai" className="h-9 w-auto object-contain" />
           </div>
           <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full text-slate-400 md:hidden">
             <X size={20} />

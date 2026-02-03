@@ -22,11 +22,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStartChat, language }) 
         {/* Glow effect behind the logo */}
         <div className="absolute inset-0 bg-violet-500/10 blur-3xl rounded-full group-hover:bg-violet-500/20 transition-all duration-500"></div>
         
-        {/* Logo Image - Increased size, removed white box container */}
+        {/* Logo Image - Optimized Size (w-24 mobile, w-32 desktop) for better aesthetics */}
         <img 
           src="/logoApp/logo-app.png" 
           alt="Gen2 Logo" 
-          className="relative w-44 h-44 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
+          className="relative w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
           onError={(e) => {
             // Fallback styling if image missing
             e.currentTarget.style.display = 'none';
